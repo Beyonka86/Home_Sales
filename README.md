@@ -1,39 +1,94 @@
-# Home_Sales
-Module 22 Asignment
+# 🏠 **Home Sales Analysis**
 
-# Instructions
-Rename the Home_Sales_starter_code.ipynb file as Home_Sales.ipynb.
+### 📘 Module 22 Assignment Instructions
 
-Import the necessary PySpark SQL functions for this assignment.
+### ✅ Step-by-Step Tasks:
 
-Read the home_sales_revised.csv data in the starter code into a Spark DataFrame.
+1. **Rename Notebook**
 
-Create a temporary table called home_sales.
+   * Rename `Home_Sales_starter_code.ipynb` to `Home_Sales.ipynb`.
 
-Answer the following questions using SparkSQL:
+2. **Import Required Libraries**
 
-What is the average price for a four-bedroom house sold for each year? Round off your answer to two decimal places.
+   * Import all necessary **PySpark SQL functions** to perform data transformations and queries.
 
-What is the average price of a home for each year the home was built, that has three bedrooms and three bathrooms? Round off your answer to two decimal places.
+3. **Load the Dataset**
 
-What is the average price of a home for each year the home was built, that has three bedrooms, three bathrooms, two floors, and is greater than or equal to 2,000 square feet? Round off your answer to two decimal places.
+   * Read the `home_sales_revised.csv` file into a **Spark DataFrame**.
 
-What is the average price of a home per "view" rating having an average home price greater than or equal to $350,000? Determine the run time for this query, and round off your answer to two decimal places.
+4. **Create a Temporary Table**
 
-Cache your temporary table home_sales.
+   * Register the DataFrame as a **temporary view** named `home_sales` using `.createOrReplaceTempView()`.
 
-Check if your temporary table is cached.
+---
 
-Using the cached data, run the last query that calculates the average price of a home per "view" rating having an average home price greater than or equal to $350,000. Determine the runtime and compare it to uncached runtime.
+### 🔎 SparkSQL Queries (Answer the following):
 
-Partition by the "date_built" field on the formatted parquet home sales data.
+5. **Average Price of 4-Bedroom Homes by Year**
 
-Create a temporary table for the parquet data.
+   * Calculate the **average sale price** for homes with 4 bedrooms grouped by **year sold**.
+   * Round the results to **two decimal places**.
 
-Run the last query that calculates the average price of a home per "view" rating having an average home price greater than or equal to $350,000. Determine the runtime and compare it to uncached runtime.
+6. **Average Price by Year for 3 Bed / 3 Bath Homes**
 
-Uncache the home_sales temporary table.
+   * Find the **average sale price** for homes built each year with **3 bedrooms and 3 bathrooms**.
+   * Round to two decimal places.
 
-Verify that the home_sales temporary table is uncached using PySpark.
+7. **Filtered Average Price by Size and Features**
 
-Download your Home_Sales.ipynb file and upload it into your "Home_Sales" GitHub repository.
+   * For homes with **3 bedrooms, 3 bathrooms, 2 floors**, and **≥ 2,000 sqft**, calculate the **average price** by year built.
+   * Round to two decimal places.
+
+8. **View Rating vs. Average Price**
+
+   * Determine the **average home price per "view" rating** where the **average price is ≥ \$350,000**.
+   * Measure and report the **query runtime**.
+   * Round average prices to two decimal places.
+
+---
+
+### ⚡ Caching & Performance Optimization:
+
+9. **Cache the Temporary Table**
+
+   * Cache the `home_sales` temporary table.
+
+10. **Verify Cache**
+
+* Confirm that the table is successfully cached using PySpark.
+
+11. **Re-run Query with Cache**
+
+* Re-execute the query from Step 8 using the **cached data**.
+* Measure and compare the **runtime** to the uncached version.
+
+---
+
+### 📦 Parquet and Partitioning:
+
+12. **Partition Data by Year Built**
+
+* Save the formatted home sales data as **Parquet**, partitioned by the `date_built` field.
+
+13. **Create Temporary Table from Parquet**
+
+* Register the partitioned Parquet data as a **new temporary view**.
+
+14. **Re-run View Rating Query on Partitioned Data**
+
+* Run the same **"view" rating average price query** again.
+* Record and compare **runtime performance**.
+
+---
+
+### 🧹 Cleanup:
+
+15. **Uncache Table**
+
+* Uncache the `home_sales` temporary table.
+
+16. **Verify Uncache**
+
+* Use PySpark to confirm that the table has been uncached.
+
+---
